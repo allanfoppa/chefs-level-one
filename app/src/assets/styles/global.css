@@ -1,0 +1,88 @@
+/**
+ *  Description: Chef's Level One CSS
+ *  Version: 1.0.0
+ *  Last update: 03/2021
+ *
+ *
+ *  SUMMARY:
+ *
+ *  0. RESET
+ *  1. ROOT
+ *  2. COMMOM
+**/
+
+/* ==========================================================================
+   0. RESET
+   ========================================================================== */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ==========================================================================
+   1. ROOT
+   ========================================================================== */
+
+:root {
+
+    --size-xxsmall: 0.25rem; /* 4px */
+    --size-xsmall: 0.5rem; /* 8px */
+    --size-small: 0.75rem; /* 12px */
+    --size-standard: 1rem; /* 16px */
+    --size-large: 1.25rem; /* 20px */
+    --size-xlarge: 1.5rem; /* 24px */
+    --size-xxlarge: 2rem; /* 32px */
+
+    --breakpoint-screen-xxsmall: 375px;
+    --breakpoint-screen-xsmall: 414px;
+    --breakpoint-screen-small: 768px;
+    --breakpoint-screen-standard: 992px;
+    --breakpoint-screen-large: 1366px;
+    --breakpoint-screen-xlarge: 1680px;
+    --breakpoint-screen-xxlarge: 1840px;
+
+    --container-mobile: 100%;
+    --container-tablet: 720px;
+    --container-standard-desktop: 960px;
+    --container-large-desktop: 1174px;
+
+    --font-family-primary: 'Merriweather', serif;
+    --font-family-secondary: "Recursive", cursive;
+
+    --color-black: #000;
+    --color-white: #fff;
+
+    --line-height-standard: var(--size-large);
+
+    --font-typograpy-title: normal bold var(--size-xxlarge)/var(--line-height-standard) var(--font-family-primary);
+    --font-typograpy-paragraph: normal normal var(--size-standard)/var(--line-height-standard) var(--font-family-secondary);
+
+    --border-standard: 1px solid #000;
+
+}
+
+/* ==========================================================================
+   2. COMMOM
+   ========================================================================== */
+
+.container {
+    width: var(--container-mobile);
+}
+
+@media (min-width: 768px){
+    .container {
+        width: var(--container-tablet);
+    }
+}
+@media (min-width: 992px){
+    .container {
+        width: var(--container-standard-desktop);
+    }
+}
+@media (min-width: 1366px){
+    .container {
+        width: var(--container-large-deskto);
+    }
+}

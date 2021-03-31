@@ -16,7 +16,7 @@ const ExemplesController = require('../controllers/ExemplesController')
 // routes.put('/item/:id', UpdateController.update)
 // routes.delete('/item/:id', DeleteController.delete)
 
-routes.get('/', HomeController.index)
+routes.get('/recipes', HomeController.index)
 
 routes.get('/exemplos', ExemplesController.index)
 

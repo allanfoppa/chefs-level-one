@@ -2,48 +2,43 @@ import { useEffect, useState } from "react"
 
 import { endpointHome } from '../../services/endpoints'
 
-import Heading from "../../components/Foundation/Heading"
+import Image from '../../components/Media/Image'
+import CarouselComponent from '../../components/Layout/Carousel'
+import Container from '../../components/Layout/Container'
+
+import '../../assets/styles/home_page.css'
+
+import handleCreateNewArrayWithCondition from '../../helpers/handleCreateNewArrayWithCondition'
+
+import logo from '../../assets/images/logo.png'
 
 const Home = () => {
-
-    let carouselList = []
 
     const [ carousel, setCarousel ] = useState([])
     const [ cards, setCards ] = useState([])
 
-    const populateCarousel = (arr) => {
-        for (const iterator of arr) if(iterator.spotlight) carouselList.push(iterator)
-        console.log('Carrosel', carouselList)
-        return carouselList
-    }
-
-    const populateHome = async () => {
-        let data = await fetch(endpointHome)
-        let dataJSON = await data.json()
-        console.log(dataJSON)
-        let popCarousel = populateCarousel(dataJSON.data)
-        let popCards = dataJSON.data
-    }
-
     useEffect(() => {
+        const populateHome = async () => {
+            let data = await fetch(endpointHome)
+            let dataJSON = await data.json()
+            console.log(dataJSON)
+            let popCarousel = handleCreateNewArrayWithCondition(dataJSON.data, 'spotlight')
+            let popCards = dataJSON.data
+            setCarousel(popCarousel)
+            setCards(popCards)
+        }
         populateHome()
     }, [])
 
     return(
-        <div>
-            <p>Home</p>
-            {/* <ul>
-                {rec.map((item, index) =>
-                    <li key={index}>
-                        {item.name}
-                    </li>
-                )}
-            </ul> */}
-            <Heading
-                text="Receitas"
-                level={1}
-                styling="my-title"
-            />
+        <div id="layout-home">
+            <Container styling="layout-home__logo-container">
+                <Image
+                    src={logo}
+                    alt="Chef's Level One"
+                />
+            </Container>
+            <CarouselComponent data={carousel} />
         </div>
     )
 }

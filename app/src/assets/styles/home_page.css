@@ -1,0 +1,14 @@
+#layout-home {
+    display: grid;
+    grid-template-areas:
+    'logo'
+    'carousel'
+    'masonry-recipes'
+    ;
+}
+
+.layout-home__logo-container {
+    display: grid;
+    justify-content: center;
+    padding: var(--size-xxlarge) 0;
+}

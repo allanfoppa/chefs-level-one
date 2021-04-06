@@ -5,14 +5,17 @@ module.exports = {
         try {
             const { rows } = await db.query('SELECT * FROM recipes')
 
-            return res.status(200).json(
-                { message: `Foram encontradas ${rows.length} receita(s)`, data: rows }
-            )
+            if (rows.length === 0) {
+                console.log('nada cadastradado')
+                return res.status(204).send()
+            } else {
+                console.log('la vai')
+                return res.status(200).json({ message: `Foram encontradas ${rows.length} receita(s)`, data: rows })
+            }
         } catch (error) {
             console.error(error)
-
             return res.status(400).json(
-                { message: 'Nenhuma receita cadastrada', lenght: 0 }
+                { message: 'Houve algum erro na aplicação' }
             )
         }
     }

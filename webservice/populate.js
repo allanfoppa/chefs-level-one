@@ -32,5 +32,8 @@ function populateDatabase() {
             client.end(console.log('Closed client connection'))
             process.exit()
         })
-        .catch(err => console.log(err))
+        .catch((err) => {
+            console.log(err)
+            process.exit()
+        })
 }

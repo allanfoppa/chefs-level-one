@@ -56,8 +56,8 @@
 
     --line-height-standard: var(--size-large);
 
-    --font-typograpy-title: normal bold var(--size-xxlarge)/var(--line-height-standard) var(--font-family-primary);
-    --font-typograpy-paragraph: normal normal var(--size-standard)/var(--line-height-standard) var(--font-family-secondary);
+    --font-typography-title: normal bold var(--size-xxlarge)/var(--line-height-standard) var(--font-family-primary);
+    --font-typography-paragraph: normal normal var(--size-standard)/var(--line-height-standard) var(--font-family-secondary);
 
     --border-standard: 1px solid #000;
 
@@ -83,6 +83,6 @@
 }
 @media (min-width: 1366px){
     .container {
-        width: var(--container-large-deskto);
+        width: var(--container-large-desktop);
     }
 }

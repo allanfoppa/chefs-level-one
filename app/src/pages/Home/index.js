@@ -1,34 +1,55 @@
-import { useEffect, useState } from "react"
+import React from "react"
 
 import { endpointHome } from '../../services/endpoints'
 
-import Image from '../../components/Media/Image'
+import Card from '../../components/Layout/Card'
 import CarouselComponent from '../../components/Layout/Carousel'
+import NoContent from '../../components/Layout/NoContent'
 import Container from '../../components/Layout/Container'
+import Image from '../../components/Media/Image'
 
 import '../../assets/styles/home_page.css'
 
-import handleCreateNewArrayWithCondition from '../../helpers/handleCreateNewArrayWithCondition'
+import handleCreateNewArrayWithCondition from '../../utils/handleCreateNewArrayWithCondition'
 
 import logo from '../../assets/images/logo.png'
 
 const Home = () => {
 
-    const [ carousel, setCarousel ] = useState([])
-    const [ cards, setCards ] = useState([])
+    const [ state, setState ] = React.useState({
+        carousel: [],
+        cards: [],
+        showNoContent: false
+    })
 
-    useEffect(() => {
-        const populateHome = async () => {
-            let data = await fetch(endpointHome)
-            let dataJSON = await data.json()
-            console.log(dataJSON)
-            let popCarousel = handleCreateNewArrayWithCondition(dataJSON.data, 'spotlight')
-            let popCards = dataJSON.data
-            setCarousel(popCarousel)
-            setCards(popCards)
+    const { carousel, cards, showNoContent } = state
+
+    React.useEffect(() => {
+        const populatePage = async () => {
+            await fetch(endpointHome)
+            .then((response) => {
+                console.log('Oi', response)
+                if (response.status === 200) response.json().then((res) => { handlePopulate(res.data) })
+                if (response.status === 204) handleNoContent()
+            })
+            .catch((error) => {
+                console.log('Houve um problema com a requisição Fetch: ' + error.message)
+            })
         }
-        populateHome()
+
+        populatePage()
     }, [])
+
+    const handleNoContent = () => {
+        setState({showNoContent: true})
+    }
+
+    const handlePopulate = (res) => {
+        let popCarousel = handleCreateNewArrayWithCondition(res, 'spotlight')
+        let popCards = res
+        setState({carousel: popCarousel})
+        setState({cards: popCards})
+    }
 
     return(
         <div id="layout-home">
@@ -39,6 +60,10 @@ const Home = () => {
                 />
             </Container>
             <CarouselComponent data={carousel} />
+            {showNoContent
+                ? <NoContent />
+                : <Card data={cards} />
+            }
         </div>
     )
 }

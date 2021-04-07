@@ -7,7 +7,7 @@ import '../../assets/styles/carousel_component.css'
 import Image from '../Media/Image'
 
 const CarouselComponent = (props) => {
-    console.log('Ja no component Carousel', props.data)
+    // console.log('Ja no component Carousel', props.data)
     return(
         <Carousel
 			autoPlay={true}

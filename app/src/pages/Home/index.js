@@ -1,6 +1,6 @@
 import React from "react"
 
-import { endpointHome } from '../../services/endpoints'
+import { endpointHome } from '../../config/endpoints'
 
 import Card from '../../components/Layout/Card'
 import CarouselComponent from '../../components/Layout/Carousel'
@@ -28,7 +28,6 @@ const Home = () => {
         const populatePage = async () => {
             await fetch(endpointHome)
             .then((response) => {
-                console.log('Oi', response)
                 if (response.status === 200) response.json().then((res) => { handlePopulate(res.data) })
                 if (response.status === 204) handleNoContent()
             })
@@ -60,10 +59,12 @@ const Home = () => {
                 />
             </Container>
             <CarouselComponent data={carousel} />
-            {showNoContent
-                ? <NoContent />
-                : <Card data={cards} />
-            }
+            <Container>
+                {showNoContent
+                    ? <NoContent />
+                    : <Card data={cards} />
+                }
+            </Container>
         </div>
     )
 }

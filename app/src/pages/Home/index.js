@@ -1,18 +1,23 @@
 import React from "react"
 
-import { endpointHome } from '../../services/endpoints'
+import { endpointHome } from '../../config/endpoint'
 
-import Card from '../../components/Layout/Card'
-import CarouselComponent from '../../components/Layout/Carousel'
-import NoContent from '../../components/Layout/NoContent'
-import Container from '../../components/Layout/Container'
-import Image from '../../components/Media/Image'
+import {
+    IMAGE_LOGO,
+    COMP_LAYOUT_CARD,
+    COMP_LAYOUT_CAROUSEL,
+    COMP_LAYOUT_NOCONTENT,
+    COMP_LAYOUT_CONTAINER,
+    COMP_MEDIA_IMAGE,
+    UTIL_HANDLE_CREATE_NEW_ARRAY_WITH_CONDITION
+} from '../../config/import'
+
 
 import '../../assets/styles/home_page.css'
 
-import handleCreateNewArrayWithCondition from '../../utils/handleCreateNewArrayWithCondition'
-
-import logo from '../../assets/images/logo.png'
+import {
+    app_title
+} from '../../config/string'
 
 const Home = () => {
 
@@ -45,7 +50,7 @@ const Home = () => {
     }
 
     const handlePopulate = (res) => {
-        let popCarousel = handleCreateNewArrayWithCondition(res, 'spotlight')
+        let popCarousel = UTIL_HANDLE_CREATE_NEW_ARRAY_WITH_CONDITION(res, 'spotlight')
         let popCards = res
         setState({carousel: popCarousel})
         setState({cards: popCards})
@@ -53,16 +58,16 @@ const Home = () => {
 
     return(
         <div id="layout-home">
-            <Container styling="layout-home__logo-container">
-                <Image
-                    src={logo}
-                    alt="Chef's Level One"
+            <COMP_LAYOUT_CONTAINER styling="layout-home__logo-container">
+                <COMP_MEDIA_IMAGE
+                    src={IMAGE_LOGO}
+                    alt={app_title}
                 />
-            </Container>
-            <CarouselComponent data={carousel} />
+            </COMP_LAYOUT_CONTAINER>
+            <COMP_LAYOUT_CAROUSEL data={carousel} />
             {showNoContent
-                ? <NoContent />
-                : <Card data={cards} />
+                ? <COMP_LAYOUT_NOCONTENT />
+                : <COMP_LAYOUT_CARD data={cards} />
             }
         </div>
     )

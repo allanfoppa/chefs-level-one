@@ -1,6 +1,11 @@
-const Card = () => {
+
+import '../../assets/styles/cards_component.css'
+
+const Card = (props) => {
     return(
-        <p>Aqui vai os cards</p>
+        <div className="cards">
+            <p>Ola, aqui vai os cards</p>
+        </div>
     )
 }
 

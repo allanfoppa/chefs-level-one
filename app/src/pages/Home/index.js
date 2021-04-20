@@ -33,7 +33,6 @@ const Home = () => {
         const populatePage = async () => {
             await fetch(endpointHome)
             .then((response) => {
-                console.log('Oi', response)
                 if (response.status === 200) response.json().then((res) => { handlePopulate(res.data) })
                 if (response.status === 204) handleNoContent()
             })

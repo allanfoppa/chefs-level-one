@@ -6,10 +6,8 @@ module.exports = {
             const { rows } = await db.query('SELECT * FROM recipes')
 
             if (rows.length === 0) {
-                console.log('nada cadastradado')
                 return res.status(204).send()
             } else {
-                console.log('la vai')
                 return res.status(200).json({ message: `Foram encontradas ${rows.length} receita(s)`, data: rows })
             }
         } catch (error) {

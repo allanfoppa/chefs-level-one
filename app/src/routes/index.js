@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter, Route, Switch } from 'react-router-dom'
 
-import Home from '../pages/Home/'
-import Details from '../pages/Details/'
+import Home from '../views/Home.js'
+import Details from '../views/Details.js'
 
 const Routes = () => {
     return(

@@ -1,10 +1,8 @@
 
-import '../../assets/styles/cards_component.css'
-
 const Card = (props) => {
     return(
         <div className="cards">
-            <p>Ola, aqui vai os cards</p>
+            <p className="tw-text-5xl">Ola, aqui vai os cards</p>
         </div>
     )
 }

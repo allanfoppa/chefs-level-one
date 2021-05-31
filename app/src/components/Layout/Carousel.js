@@ -2,8 +2,6 @@ import React from 'react';
 import { Carousel } from 'react-responsive-carousel'
 import "react-responsive-carousel/lib/styles/carousel.min.css"
 
-import '../../assets/styles/carousel_component.css'
-
 import Image from '../Media/Image'
 
 const CarouselComponent = (props) => {

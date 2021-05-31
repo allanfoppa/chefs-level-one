@@ -1,6 +1,8 @@
 import React from "react"
 
-import { endpointHome } from '../../config/endpoint'
+import {
+    endpointHome
+} from '../constants/endpoint'
 
 import {
     IMAGE_LOGO,
@@ -10,14 +12,11 @@ import {
     COMP_LAYOUT_CONTAINER,
     COMP_MEDIA_IMAGE,
     UTIL_HANDLE_CREATE_NEW_ARRAY_WITH_CONDITION
-} from '../../config/import'
-
-
-import '../../assets/styles/home_page.css'
+} from '../config/import'
 
 import {
     app_title
-} from '../../config/string'
+} from '../constants/string'
 
 const Home = () => {
 
@@ -49,18 +48,19 @@ const Home = () => {
     }
 
     const handlePopulate = (res) => {
-        let popCarousel = UTIL_HANDLE_CREATE_NEW_ARRAY_WITH_CONDITION(res, 'spotlight')
-        let popCards = res
-        setState({carousel: popCarousel})
-        setState({cards: popCards})
+        setState({carousel: UTIL_HANDLE_CREATE_NEW_ARRAY_WITH_CONDITION(res, 'spotlight')})
+        setState({cards: res})
     }
 
     return(
-        <div id="layout-home">
-            <COMP_LAYOUT_CONTAINER styling="layout-home__logo-container">
+        <>
+            <COMP_LAYOUT_CONTAINER
+                styling="tw-w-full tw-flex tw-justify-self-center tw-justify-center tw-py-5"
+            >
                 <COMP_MEDIA_IMAGE
                     src={IMAGE_LOGO}
                     alt={app_title}
+                    styling="tw-w-48 md:tw-w-1/6"
                 />
             </COMP_LAYOUT_CONTAINER>
             <COMP_LAYOUT_CAROUSEL data={carousel} />
@@ -68,7 +68,7 @@ const Home = () => {
                 ? <COMP_LAYOUT_NOCONTENT />
                 : <COMP_LAYOUT_CARD data={cards} />
             }
-        </div>
+        </>
     )
 }
 

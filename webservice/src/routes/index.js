@@ -1,8 +1,7 @@
-const express = require('express')
-const routes = express.Router()
+import { Router } from 'express'
+const routes = Router()
 
-const HomeController = require('../controllers/HomeController')
-const ExemplesController = require('../controllers/ExemplesController')
+import RecipesController from '../controllers/recipes.controller.js'
 
 // index    = GET
 // item     = GET/:ID
@@ -16,8 +15,6 @@ const ExemplesController = require('../controllers/ExemplesController')
 // routes.put('/item/:id', UpdateController.update)
 // routes.delete('/item/:id', DeleteController.delete)
 
-routes.get('/recipes', HomeController.index)
+routes.get('/v1/api/recipes', RecipesController.index)
 
-routes.get('/exemplos', ExemplesController.index)
-
-module.exports = routes
+export default routes

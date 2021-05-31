@@ -1,1 +1,1 @@
-export const endpointHome = `${process.env.REACT_APP_WEBSERVICE_BASE_URL}/recipes`
+export const endpointHome = `${process.env.REACT_APP_WEBSERVICE_BASE_URL}/v1/api/recipes`

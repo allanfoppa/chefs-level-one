@@ -1,14 +1,17 @@
-const express = require('express')
-require('dotenv').config()
-const cors = require('cors')
-const routes = require('./routes/index.js')
+import express from 'express'
+import cors from 'cors'
+import routes from './routes/index.js'
+import path from 'path'
+import { fileURLToPath } from 'url';
 
 const app = express()
 
 app.use(cors())
 app.use(routes)
-app.use('/images', express.static(__dirname + '/uploads'))
 app.use(express.json())
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+app.use('/images', express.static(path.join(__dirname ,'uploads')));
 
 app.get('/', function (req, res) {
 	res.send('Tudo certo!');

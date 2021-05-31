@@ -1,9 +1,9 @@
-const { Pool } = require('pg')
-const dotenv = require('dotenv')
+import pg from 'pg'
+import { config } from 'dotenv'
 
-dotenv.config()
+config()
 
-const pool = new Pool({
+const pool = new pg.Pool({
 	connectionString: process.env.CONNECTION_STRING
 })
 
@@ -11,6 +11,4 @@ pool.on('connect', () => {
 	console.log('Connected with database!')
 })
 
-module.exports = {
-	query: (text, params) => pool.query(text, params),
-}
+export function query(text, params) { return pool.query(text, params) }

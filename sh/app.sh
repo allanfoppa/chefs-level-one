@@ -2,4 +2,4 @@
 
 cd /code/app/
 yarn install
-yarn dev
+yarn start

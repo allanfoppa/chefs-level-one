@@ -8,7 +8,7 @@ import {
     IMAGE_LOGO,
     COMP_LAYOUT_NOCONTENT,
     COMP_LAYOUT_CONTAINER,
-    COMP_LAYOUT_MASONRY,
+    COMP_LAYOUT_GRID,
     COMP_MEDIA_IMAGE,
 } from '../config/import'
 
@@ -18,20 +18,19 @@ import {
 
 const Home = () => {
 
-    const [ state, setState ] = React.useState({
-        cards: [],
-        showNoContent: false,
-        message: ''
-    })
-
-    const { cards, showNoContent, message } = state
+    const [ cards, setCards ] = React.useState([])
+    const [ showNoContent, setShowNoContent ] = React.useState(false)
+    const [ message, setMessage ] = React.useState('')
 
     React.useEffect(() => {
         const populatePage = async () => {
             await fetch(endpointHome)
             .then((response) => {
-                if (response.status === 200) response.json().then((res) => { setState({cards: res.data}) })
-                if (response.status === 404) response.json().then((res) => { setState({showNoContent: true, message: res.data.message}) })
+                if (response.status === 200) response.json().then((res) => { setCards(res.data) })
+                if (response.status === 404) response.json().then((res) => {
+                    setShowNoContent(true)
+                    setMessage(res.data.message)
+                })
             })
             .catch((error) => {
                 console.log('Houve um problema com a requisição Fetch: ' + error.message)
@@ -41,10 +40,11 @@ const Home = () => {
         populatePage()
     }, [])
 
+
     return(
         <>
             <COMP_LAYOUT_CONTAINER
-                styling="tw-w-full tw-flex tw-justify-self-center tw-justify-center tw-py-6"
+                styling="tw-w-full tw-flex tw-justify-self-center tw-justify-center tw-py-6 md:tw-pt-6 md:tw-pb-12"
             >
                 <COMP_MEDIA_IMAGE
                     src={IMAGE_LOGO}
@@ -53,11 +53,11 @@ const Home = () => {
                 />
             </COMP_LAYOUT_CONTAINER>
             <COMP_LAYOUT_CONTAINER
-                styling="tw-grid tw-justify-self-center tw-justify-center tw-py-6"
+                styling="tw-grid tw-justify-self-center tw-justify-center tw-py-6 tw-px-6 md:tw-px-48"
             >
                 {showNoContent
                     ? <COMP_LAYOUT_NOCONTENT message={message} />
-                    : <COMP_LAYOUT_MASONRY data={cards} />
+                    : <COMP_LAYOUT_GRID data={cards} />
                 }
             </COMP_LAYOUT_CONTAINER>
 

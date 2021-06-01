@@ -3,12 +3,12 @@ import {
     COMP_LAYOUT_CARD
 } from '../../config/import'
 
-const Masonry = (props) => {
+const Grid = (props) => {
 
-    console.log('[MASONRY]', props.data)
+    console.log('[GRID]', props.data)
 
     return(
-        <div className="md:masonry before:box-inherit after:box-inherit">
+        <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-12">
             {props.data.map((d, index) => {
                 return <COMP_LAYOUT_CARD
                     key={index}
@@ -23,4 +23,4 @@ const Masonry = (props) => {
     )
 }
 
-export default Masonry
+export default Grid

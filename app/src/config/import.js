@@ -15,7 +15,7 @@ export { default as COMP_FORMS_INPUT } from '../components/Forms/Input'
 export { default as COMP_LAYOUT_CARD } from '../components/Layout/Card'
 export { default as COMP_LAYOUT_CAROUSEL } from '../components/Layout/Carousel'
 export { default as COMP_LAYOUT_CONTAINER } from '../components/Layout/Container'
-export { default as COMP_LAYOUT_MASONRY } from '../components/Layout/Masonry'
+export { default as COMP_LAYOUT_GRID } from '../components/Layout/Grid'
 export { default as COMP_LAYOUT_NOCONTENT } from '../components/Layout/NoContent'
 
 export { default as COMP_MEDIA_IMAGE } from '../components/Media/Image'

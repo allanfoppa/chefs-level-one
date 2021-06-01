@@ -1,8 +1,12 @@
 
 const Card = (props) => {
     return(
-        <div className="cards">
-            <p className="tw-text-5xl">Ola, aqui vai os cards</p>
+        <div className="break-inside p-8 my-6 bg-gray-100 rounded-lg">
+            {props.id}
+            {props.name}
+            {props.thumbsUp}
+            {props.thumbsDown}
+            <img src={props.image} alt="teste" />
         </div>
     )
 }

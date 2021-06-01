@@ -21,4 +21,4 @@ export { default as COMP_LAYOUT_NOCONTENT } from '../components/Layout/NoContent
 export { default as COMP_MEDIA_IMAGE } from '../components/Media/Image'
 
 // SRC/UTILS
-export { default as UTIL_HANDLE_CREATE_NEW_ARRAY_WITH_CONDITION } from '../components/Media/Image'
+export { default as UTIL_HANDLE_CREATE_NEW_ARRAY_WITH_CONDITION } from '../utils/handleCreateNewArrayWithCondition'

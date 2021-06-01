@@ -1,8 +1,8 @@
 import React from 'react'
 
-const NoContent = () => {
+const NoContent = (props) => {
     return(
-        <p id="no-content">Não há nenhuma receita cadastrada :(</p>
+        <p id="no-content">{props.message}</p>
     )
 }
 

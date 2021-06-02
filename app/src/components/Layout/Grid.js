@@ -1,16 +1,21 @@
 
-import {
-    COMP_LAYOUT_CARD
-} from '../../config/import'
+import Card from '../Layout/Card'
 
 const Grid = (props) => {
 
     console.log('[GRID]', props.data)
 
     return(
-        <div className="tw-grid tw-grid-cols-1 md:tw-grid-cols-3 tw-gap-12">
+        <div className="
+            tw-grid
+            tw-grid-cols-1
+            md:tw-grid-cols-2
+            xl:tw-grid-cols-3
+            tw-gap-12
+            xl:tw-gap-18"
+        >
             {props.data.map((d, index) => {
-                return <COMP_LAYOUT_CARD
+                return <Card
                     key={index}
                     id={d.id}
                     image={d.image}

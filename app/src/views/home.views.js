@@ -1,12 +1,14 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 import ImageLogo from '../assets/images/logo.png'
 
-import Container from '../components/Layout/Container'
+import { FullContainer, Container} from '../components/Layout/Container'
 import Image from '../components/Media/Image'
 import Heading from '../components/Foundation/Heading'
 import NoContent from '../components/Layout/NoContent'
 import Grid from '../components/Layout/Grid'
+import { Paragraph, Span } from "../components/Foundation/Typography"
 
 import {
     getCards
@@ -15,7 +17,6 @@ import {
 import {
     app_title
 } from '../constants/string'
-
 
 const Home = () => {
 
@@ -53,7 +54,7 @@ const Home = () => {
             >
                 <Heading
                     text="Nossas receitas"
-                    level={1}
+                    level={2}
                     styling="tw-font-sans tw-text-4xl tw-pb-12"
                 />
                 {showNoContent
@@ -61,7 +62,33 @@ const Home = () => {
                     : <Grid data={cards} />
                 }
             </Container>
-
+            <FullContainer
+                styling="tw-bg-gray-50"
+            >
+                <Container
+                    styling="tw-grid tw-justify-self-center tw-justify-center tw-py-6 tw-px-6 xl:tw-py-24 xl:tw-mt-8"
+                >
+                    <Heading
+                        text="Gostou das nossa receitas?"
+                        level={3}
+                        styling="tw-font-sans tw-text-4xl tw-pb-12"
+                    />
+                    <Paragraph
+                        styling="tw-font-sans tw-pb-12 tw-text-center"
+                    >
+                        Mande a sua clicando &nbsp;
+                        <Link
+                            to=""
+                        >
+                            <Span
+                                styling="tw-text-blue-400"
+                            >
+                                aqui
+                            </Span>
+                        </Link>
+                    </Paragraph>
+                </Container>
+            </FullContainer>
         </>
     )
 }

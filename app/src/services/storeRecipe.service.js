@@ -1,6 +1,19 @@
+/**
+ * @module service/storeRecipe
+*/
+
 // import {
 //     endpointStoreRecipe
 // } from '../constants/endpoint'
+
+/**
+ * Faz o envio de uma nova receita
+ * @method
+ * @param {string} name - Nome da receita
+ * @param {boolean} spotlight - Se a receita é destaque ou não
+ * @param {object} image - Imagem da receita
+ * @returns {string|array} - Mensagem de sucesso ou erro
+*/
 
 export const storeRecipe = async (data) => {
 

@@ -1,6 +1,16 @@
+/**
+ * @module service/getCards
+*/
+
 import {
     endpointHome
 } from '../constants/endpoint'
+
+/**
+ * Consulta ao BD as receitas cadastradas
+ * @method
+ * @returns {Array} - Retorna a lista de receitas
+*/
 
 export const getCards = async () => {
     try {

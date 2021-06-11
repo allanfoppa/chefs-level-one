@@ -6,13 +6,13 @@ export const storeRecipe = async (data) => {
 
     let { name, spotlight, image, intro } = data
 
-    const form = new FormData();
-    form.append("file", image);
-    form.append("name", name);
-    form.append("spotlight", spotlight);
-    form.append("intro", intro);
-    // form.append("curriculum", JSON.stringify(curriculumToArray));
-    // form.append("social_media", `{"facebook": "${socialLinksFacebook}","instagram": "${socialLinksInstagram}"}`);
+    const form = new FormData()
+    form.append("file", image)
+    form.append("name", name)
+    form.append("spotlight", spotlight)
+    form.append("intro", intro)
+    // form.append("curriculum", JSON.stringify(curriculumToArray))
+    // form.append("social_media", `{"facebook": "${socialLinksFacebook}","instagram": "${socialLinksInstagram}"}`)
 
     const consoleObj = {}
 

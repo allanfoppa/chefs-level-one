@@ -18,12 +18,7 @@ export default function SendRecipe() {
     const [spotlight, setSpotlight] = React.useState(false)
     const [intro, setIntro] = React.useState('')
 
-    const formValues = {
-        image,
-        name,
-        spotlight,
-        intro
-    }
+    const formValues = { image, name, spotlight, intro }
 
     const callStoreRecipe = () => {
         console.log('oi')
@@ -79,7 +74,7 @@ export default function SendRecipe() {
                             <label className="tw-block tw-text-gray-700 tw-mb-4" htmlFor="spotlight">
                                 Resumo da receita
                             </label>
-                            <textarea defaultValue={formValues.intro} className="tw-w-full" onChange={e => setIntro(e.target.value)} />
+                            <textarea className="tw-w-full" onChange={e => setIntro(e.target.value)} />
                         </div>
                     </div>
                     <div>

@@ -3,13 +3,12 @@ import { Link } from "react-router-dom"
 
 import ImageLogo from '../assets/images/logo.png'
 
-import { FullContainer, Container} from '../components/Layout/Container'
+import { Container} from '../components/Layout/Container'
 import Image from '../components/Media/Image'
 import Heading from '../components/Foundation/Heading'
 import NoContent from '../components/Layout/NoContent'
 import Grid from '../components/Layout/Grid'
 import Card from '../components/Layout/Card'
-import { Paragraph, Span } from "../components/Foundation/Typography"
 
 import {
     getCards

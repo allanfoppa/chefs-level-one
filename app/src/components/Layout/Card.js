@@ -29,8 +29,8 @@ const Card = (props) => {
 Card.propTypes = {
 	name: PropTypes.string.isRequired,
 	slug: PropTypes.string.isRequired,
-	idRecipe: PropTypes.number.isRequired,
-	image: PropTypes.object.isRequired,
+	idRecipe: PropTypes.string.isRequired,
+	image: PropTypes.string.isRequired,
 	thumbsUp: PropTypes.number.isRequired,
 	thumbsDown: PropTypes.number.isRequired
 }
@@ -47,7 +47,7 @@ const CardImage = (props) => {
 
 CardImage.propTypes = {
 	alt: PropTypes.string.isRequired,
-	src: PropTypes.object.isRequired,
+	src: PropTypes.string.isRequired,
 }
 
 const CardRecipeName = (props) => {

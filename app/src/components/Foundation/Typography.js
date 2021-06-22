@@ -12,7 +12,7 @@ export const Paragraph = (props) => {
 }
 
 Paragraph.propTypes = {
-	children: PropTypes.func.isRequired,
+	children: PropTypes.string.isRequired,
 	styling: PropTypes.string
 }
 
@@ -27,6 +27,6 @@ export const Span = (props) => {
 }
 
 Span.propTypes = {
-	children: PropTypes.func.isRequired,
+	children: PropTypes.string.isRequired,
 	styling: PropTypes.string
 }

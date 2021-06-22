@@ -10,7 +10,7 @@ const Grid = (props) => {
 }
 
 Grid.propTypes = {
-	children: PropTypes.func.isRequired,
+	children: PropTypes.array.isRequired,
 	styling: PropTypes.string
 }
 

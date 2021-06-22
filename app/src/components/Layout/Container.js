@@ -10,7 +10,7 @@ export const FullContainer = (props) => {
 }
 
 FullContainer.propTypes = {
-	children: PropTypes.func.isRequired,
+	children: PropTypes.object.isRequired,
 	styling: PropTypes.string
 }
 
@@ -23,6 +23,6 @@ export const Container = (props) => {
 }
 
 Container.propTypes = {
-	children: PropTypes.func.isRequired,
+	children: PropTypes.object.isRequired,
 	styling: PropTypes.string
 }

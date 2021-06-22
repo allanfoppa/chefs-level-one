@@ -6,20 +6,20 @@ import Image from '../Media/Image'
 import { ThumbsUp, ThumbsDown } from '../Foundation/Icons'
 import { Paragraph } from '../Foundation/Typography'
 
-const Card = (props) => {
+const Card = ({name, slug, idRecipe, image, thumbsUp, thumbsDown}) => {
 	return(
 		<div className="tw-overflow-hidden tw-shadow-lg tw-rounded-lg tw-h-96 tw-w-full md:tw-w-80 tw-cursor-pointer tw-m-auto">
 			<Link
 				to={{
-					pathname: `/${props.slug}`,
-					idRecipe: props.idRecipe
+					pathname: `/${slug}`,
+					recipeId: idRecipe
 				}}
 				className="tw-block tw-h-full"
 			>
-				<CardImage src={props.image} alt={props.name} />
+				<CardImage src={image} alt={name} />
 				<div className="tw-grid tw-content-between tw-w-full tw-h-auto tw-p-4 tw-bg-gray-50" style={{'height': '42%'}}>
-					<CardRecipeName name={props.name} />
-					<CardRating thumbsUp={props.thumbsUp} thumbsDown={props.thumbsDown} />
+					<CardRecipeName name={name} />
+					<CardRating thumbsUp={thumbsUp} thumbsDown={thumbsDown} />
 				</div>
 			</Link>
 		</div>
@@ -35,11 +35,11 @@ Card.propTypes = {
 	thumbsDown: PropTypes.number.isRequired
 }
 
-const CardImage = (props) => {
+const CardImage = ({alt, src}) => {
 	return(
 		<Image
-			alt={props.alt}
-			src={props.src}
+			alt={alt}
+			src={src}
 			styling="tw-h-56 tw-w-full tw-object-cover"
 		/>
 	)
@@ -50,10 +50,10 @@ CardImage.propTypes = {
 	src: PropTypes.string.isRequired,
 }
 
-const CardRecipeName = (props) => {
+const CardRecipeName = ({name}) => {
 	return(
 		<Paragraph className="tw-text-xl tw-font-medium tw-mb-2">
-			{props.name}
+			{name}
 		</Paragraph>
 	)
 }
@@ -62,16 +62,16 @@ CardRecipeName.propTypes = {
 	name: PropTypes.string.isRequired,
 }
 
-const CardRating = (props) => {
+const CardRating = ({thumbsUp, thumbsDown}) => {
 	return(
 		<div className="tw-flex tw-justify-end tw-w-full">
 			<div className="tw-grid tw-grid-cols-2 gap-2 tw-justify-items-end tw-items-center tw-mr-4">
 				<ThumbsUp />
-				{props.thumbsUp}
+				{thumbsUp}
 			</div>
 			<div className="tw-grid tw-grid-cols-2 gap-2 tw-justify-items-end tw-items-center">
 				<ThumbsDown />
-				{props.thumbsDown}
+				{thumbsDown}
 			</div>
 		</div>
 	)

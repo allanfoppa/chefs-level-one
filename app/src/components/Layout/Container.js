@@ -1,28 +1,28 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const FullContainer = (props) => {
+export const FullContainer = ({children, styling}) => {
 	return(
-		<div className={`${props.styling}`}>
-			{props.children}
+		<div className={`${styling ? styling : ''}`}>
+			{children}
 		</div>
 	)
 }
 
 FullContainer.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.node.isRequired,
 	styling: PropTypes.string
 }
 
-export const Container = (props) => {
+export const Container = ({children, styling}) => {
 	return(
-		<div className={`container ${props.styling}`}>
-			{props.children}
+		<div className={`tw-container ${styling ? styling : ''}`}>
+			{children}
 		</div>
 	)
 }
 
 Container.propTypes = {
-	children: PropTypes.object.isRequired,
+	children: PropTypes.node.isRequired,
 	styling: PropTypes.string
 }

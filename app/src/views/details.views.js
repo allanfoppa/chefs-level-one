@@ -1,8 +1,12 @@
 import React from 'react'
 
+import Header from '../components/Layout/Header'
+
 const RecipeDetails = () => {
 	return(
-		<p>RecipeDetails</p>
+		<>
+			<Header />
+		</>
 	)
 }
 

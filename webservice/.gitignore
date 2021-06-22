@@ -1,5 +1,5 @@
 # VARIAVEIS DE AMBIENTE
-!.env
+.env
 .env.local
 
 # NODE

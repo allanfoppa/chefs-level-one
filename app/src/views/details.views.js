@@ -12,6 +12,7 @@ import Heading from '../components/Foundation/Heading'
 import Image from '../components/Media/Image'
 import { Paragraph } from '../components/Foundation/Typography'
 import RecipePrepInfo from '../components/Layout/RecipePrepInfo'
+import RecipeInfoList from '../components/Layout/RecipeInfoList'
 import Divider from '../components/Layout/Divider'
 import NutritionFacts from '../components/Layout/NutritionFacts'
 
@@ -81,7 +82,7 @@ export default function RecipeDetails(props) {
 						alt={name}
 					/>
 					<div
-						className="tw-grid tw-grid-flow-row tw-grid-row-2 tw-gap-4 lg:tw-ml-32 tw-auto-rows-max"
+						className="tw-grid tw-grid-flow-row tw-grid-row-2 tw-gap-4 lg:tw-ml-32 tw-auto-rows-max tw-mb-12"
 					>
 						<div
 							className="tw-grid tw-grid-flow-column tw-grid-cols-2 tw-gap-4 lg:tw-gap-0 tw-mb-8"
@@ -90,6 +91,12 @@ export default function RecipeDetails(props) {
 							<RecipePrepInfo title="QTD PESSOAS" info={servings} />
 						</div>
 						<NutritionFacts info={nutritionFacts} />
+					</div>
+					<div>
+						<RecipeInfoList info={ingredients} />
+					</div>
+					<div>
+						<RecipeInfoList info={instructions} />
 					</div>
 				</div>
 			</Container>

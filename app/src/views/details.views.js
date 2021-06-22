@@ -93,10 +93,10 @@ export default function RecipeDetails(props) {
 						<NutritionFacts info={nutritionFacts} />
 					</div>
 					<div>
-						<RecipeInfoList info={ingredients} />
+						<RecipeInfoList info={ingredients} title="Ingredientes" />
 					</div>
 					<div>
-						<RecipeInfoList info={instructions} />
+						<RecipeInfoList info={instructions} title="Instruções" />
 					</div>
 				</div>
 			</Container>

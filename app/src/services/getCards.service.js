@@ -3,7 +3,7 @@
 */
 
 import {
-    endpointHome
+	endpointHome
 } from '../constants/endpoint'
 
 /**
@@ -13,10 +13,10 @@ import {
 */
 
 export const getCards = async () => {
-    try {
-        return await fetch(endpointHome)
-    } catch (error) {
-        console.log('caiu no cacth')
-        return console.log('Houve um problema com a requisição Fetch: ' + error.message)
-    }
+	try {
+		return await fetch(endpointHome)
+	} catch (error) {
+		console.log('caiu no cacth')
+		return console.log('Houve um problema com a requisição Fetch: ' + error.message)
+	}
 }

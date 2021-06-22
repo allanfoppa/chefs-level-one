@@ -1,9 +1,7 @@
 import React from 'react'
 
-import ImageLogo from '../assets/images/logo.png'
-
 import { Container} from '../components/Layout/Container'
-import Image from '../components/Media/Image'
+import Header from '../components/Layout/Header'
 import Heading from '../components/Foundation/Heading'
 import NoContent from '../components/Layout/NoContent'
 import Grid from '../components/Layout/Grid'
@@ -14,11 +12,10 @@ import {
 } from '../services/getCards.service'
 
 import {
-	app_title,
 	recipes_container_title
 } from '../constants/string'
 
-const Home = () => {
+export default function Home() {
 
 	const [ cards, setCards ] = React.useState([])
 	const [ showNoContent, setShowNoContent ] = React.useState(false)
@@ -44,15 +41,7 @@ const Home = () => {
 
 	return(
 		<>
-			<Container
-				styling="tw-w-full tw-flex tw-justify-self-center tw-justify-center tw-py-6 md:tw-pt-6 md:tw-pb-12"
-			>
-				<Image
-					src={ImageLogo}
-					alt={app_title}
-					styling="tw-w-48 md:tw-w-1/6"
-				/>
-			</Container>
+			<Header />
 			<Container
 				styling="tw-grid tw-justify-self-center tw-justify-center tw-py-6 tw-px-6 xl:tw-px-48 xl:tw-mb-28"
 			>
@@ -71,9 +60,10 @@ const Home = () => {
 								return(
 									<Card
 										key={index}
-										idRecipe={d.id}
+										idRecipe={d.uuid}
 										image={d.image}
 										name={d.name}
+										slug={d.slug}
 										thumbsUp={d.thumbs_up}
 										thumbsDown={d.thumbs_down}
 									/>
@@ -86,5 +76,3 @@ const Home = () => {
 		</>
 	)
 }
-
-export default Home

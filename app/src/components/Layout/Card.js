@@ -11,7 +11,7 @@ const Card = (props) => {
 		<div className="tw-overflow-hidden tw-shadow-lg tw-rounded-lg tw-h-96 tw-w-full md:tw-w-80 tw-cursor-pointer tw-m-auto">
 			<Link
 				to={{
-					pathname: `/${props.name}`,
+					pathname: `/${props.slug}`,
 					idRecipe: props.idRecipe
 				}}
 				className="tw-block tw-h-full"
@@ -28,6 +28,7 @@ const Card = (props) => {
 
 Card.propTypes = {
 	name: PropTypes.string.isRequired,
+	slug: PropTypes.string.isRequired,
 	idRecipe: PropTypes.number.isRequired,
 	image: PropTypes.object.isRequired,
 	thumbsUp: PropTypes.number.isRequired,

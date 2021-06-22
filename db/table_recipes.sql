@@ -1,6 +1,6 @@
 CREATE TABLE recipes (
     id serial PRIMARY KEY,
-    uuid varchar(32) UNIQUE,
+    uuid varchar(48) UNIQUE,
     name varchar(32) UNIQUE NOT NULL,
     slug varchar(48) UNIQUE NOT NULL,
     spotlight BOOLEAN,

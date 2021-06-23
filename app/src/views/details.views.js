@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -8,13 +7,13 @@ import { getRecipeById } from '../services/getRecipeById'
 
 import Header from '../components/Layout/Header'
 import { Container } from '../components/Layout/Container'
-import Heading from '../components/Foundation/Heading'
-import Image from '../components/Media/Image'
-import { Paragraph } from '../components/Foundation/Typography'
 import RecipePrepInfo from '../components/Layout/RecipePrepInfo'
 import RecipeInfoList from '../components/Layout/RecipeInfoList'
-import Divider from '../components/Layout/Divider'
 import NutritionFacts from '../components/Layout/NutritionFacts'
+import Divider from '../components/Layout/Divider'
+import Heading from '../components/Foundation/Heading'
+import { Paragraph } from '../components/Foundation/Typography'
+import Image from '../components/Media/Image'
 
 export default function RecipeDetails(props) {
 
@@ -34,25 +33,26 @@ export default function RecipeDetails(props) {
 			const recipeId = props.location.recipeId
 
 			getRecipeById(recipeId).then(response  => {
-				if (response.status === 200) response.json().then((res) => {
-					const recipe = res.data[0]
-
-					setName(recipe.name)
-					setIntro(recipe.intro)
-					setImage(recipe.image)
-					setPrepTime(recipe.prep_time)
-					setServings(recipe.servings)
-					setNutritionFacts(recipe.nutrition_facts)
-					setIngredients(recipe.ingredients)
-					setInstructions(recipe.instructions)
-				})
-				if (response.status === 404) response.json().then((res) => { console.log('Ola 2', res) })
+				if (response.status === 200) response.json().then((res) => { callSetData(res.data[0]) })
+				if (response.status === 404) () => { history.push('/') }
 			})
 
-		} else {
-			history.push('/')
 		}
+
+		else history.push('/')
+
 	}, [])
+
+	const callSetData = recipe => {
+		setName(recipe.name)
+		setIntro(recipe.intro)
+		setImage(recipe.image)
+		setPrepTime(recipe.prep_time)
+		setServings(recipe.servings)
+		setNutritionFacts(recipe.nutrition_facts)
+		setIngredients(recipe.ingredients)
+		setInstructions(recipe.instructions)
+	}
 
 	return(
 		<>

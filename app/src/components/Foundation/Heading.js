@@ -1,8 +1,8 @@
 import { createElement } from 'react'
 import PropTypes from 'prop-types'
 
-const Heading = (props) => {
-	return createElement(`h${props.level}`, { className: props.styling }, props.text)
+const Heading = ({level, styling, text}) => {
+	return createElement(`h${level}`, { className: styling }, text)
 }
 
 Heading.propTypes = {

@@ -1,12 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-export const Paragraph = (props) => {
+export const Paragraph = ({children, styling}) => {
 	return(
 		<p
-			className={`tw-text-base tw-text-gray-900 ${props.styling ? props.styling: ''}`}
+			className={`tw-text-base tw-text-gray-900 ${styling ? styling: ''}`}
 		>
-			{props.children}
+			{children}
 		</p>
 	)
 }
@@ -16,12 +16,12 @@ Paragraph.propTypes = {
 	styling: PropTypes.string
 }
 
-export const Span = (props) => {
+export const Span = ({children, styling}) => {
 	return(
 		<span
-			className={`tw-text-sm tw-text-gray-800 ${props.styling ? props.styling: ''}`}
+			className={`tw-text-sm tw-text-gray-800 ${styling ? styling: ''}`}
 		>
-			{props.children}
+			{children}
 		</span>
 	)
 }

@@ -1,10 +1,10 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Grid = (props) => {
+const Grid = ({children, styling}) => {
 	return(
-		<div className={props.styling}>
-			{props.children}
+		<div className={styling ? styling: ''}>
+			{children}
 		</div>
 	)
 }

@@ -1,7 +1,7 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const Image = (props) => <img loading="lazy" src={props.src} alt={props.alt} className={props.styling} />
+const Image = ({src, alt, styling}) => <img loading="lazy" src={src} alt={alt} className={styling} />
 
 Image.propTypes = {
 	src: PropTypes.string.isRequired,

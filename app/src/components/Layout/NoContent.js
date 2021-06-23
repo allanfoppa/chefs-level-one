@@ -1,9 +1,9 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 
-const NoContent = (props) => {
+const NoContent = ({message}) => {
 	return(
-		<p id="no-content">{props.message}</p>
+		<p id="no-content">{message}</p>
 	)
 }
 

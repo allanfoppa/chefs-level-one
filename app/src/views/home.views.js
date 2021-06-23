@@ -2,10 +2,10 @@ import React from 'react'
 
 import { Container} from '../components/Layout/Container'
 import Header from '../components/Layout/Header'
-import Heading from '../components/Foundation/Heading'
 import NoContent from '../components/Layout/NoContent'
 import Grid from '../components/Layout/Grid'
 import Card from '../components/Layout/Card'
+import Heading from '../components/Foundation/Heading'
 
 import {
 	getCards
@@ -23,7 +23,6 @@ export default function Home() {
 
 	React.useEffect(() => {
 		callGetCards()
-		// eslint-disable-next-line
 	}, [])
 
 	const callGetCards = () => {

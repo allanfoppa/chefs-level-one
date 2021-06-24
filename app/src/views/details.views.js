@@ -20,7 +20,10 @@ import { Paragraph } from '../components/Foundation/Typography'
 import Image from '../components/Media/Image'
 
 
-const RecipeName = ({name}) => {
+const RecipeName = () => {
+
+	const { name } = React.useContext(RecipeDetailContext)
+
 	return(
 		<Heading
 			level={1}
@@ -47,7 +50,7 @@ export default function RecipeDetails(props) {
 	const [ instructions, setInstructions ] = React.useState([])
 
 	const { showNoContent, message } = React.useContext(HandleErrorContext)
-	const { name, setName } = React.useContext(RecipeDetailContext)
+	// const { setName } = React.useContext(RecipeDetailContext)
 	// const { showNoContent, message, setShowNoContent, setMessage } = React.useContext(HandleErrorContext)
 
 	React.useEffect(() => {
@@ -66,7 +69,7 @@ export default function RecipeDetails(props) {
 	}, [])
 
 	const callSetData = recipe => {
-		setName(recipe.name)
+		// setName(recipe.name)
 		setIntro(recipe.intro)
 		setImage(recipe.image)
 		setPrepTime(recipe.prep_time)

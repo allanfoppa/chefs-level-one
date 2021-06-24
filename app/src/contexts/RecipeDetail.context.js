@@ -5,7 +5,7 @@ export const RecipeDetailContext = React.createContext({})
 
 export const RecipeDetailProvider = (props) => {
 
-	const [ name, setName ] = React.useState('')
+	const [ name, setName ] = React.useState('Veio do context')
 
 	return(
 		<RecipeDetailContext.Provider

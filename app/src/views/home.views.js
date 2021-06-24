@@ -23,19 +23,14 @@ export default function Home() {
 	const [ cards, setCards ] = React.useState([])
 	const { showNoContent, message, setShowNoContent, setMessage } = React.useContext(HandleErrorContext)
 
-	React.useEffect(() => {
-		getCardsService()
-	}, [])
-
-	const getCardsService = async () => {
+	React.useEffect(async () => {
 		let response = await getCards()
 
 		getCardsResponse(
 			response.status,
 			response.payload
 		)
-
-	}
+	}, [])
 
 	const getCardsResponse = (status, response) => {
 		switch (status) {

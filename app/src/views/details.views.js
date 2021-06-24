@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 import { useHistory } from 'react-router-dom'
 
 import { HandleErrorContext } from '../contexts/HandleError.context'
-import { RecipeDetailContext, RecipeDetailProvider } from '../contexts/RecipeDetail.context'
+import { RecipeDetailContext } from '../contexts/RecipeDetail.context'
 
 import { getRecipeById } from '../services/getRecipeById'
 
@@ -18,7 +18,6 @@ import NoContent from '../components/Layout/NoContent'
 import Heading from '../components/Foundation/Heading'
 import { Paragraph } from '../components/Foundation/Typography'
 import Image from '../components/Media/Image'
-
 
 const RecipeName = () => {
 
@@ -41,6 +40,7 @@ export default function RecipeDetails(props) {
 
 	const history = useHistory()
 
+	const [ name, setName ] = React.useState('')
 	const [ intro, setIntro ] = React.useState('')
 	const [ image, setImage ] = React.useState('')
 	const [ prepTime, setPrepTime ] = React.useState(0)
@@ -50,37 +50,52 @@ export default function RecipeDetails(props) {
 	const [ instructions, setInstructions ] = React.useState([])
 
 	const { showNoContent, message } = React.useContext(HandleErrorContext)
-	// const { setName } = React.useContext(RecipeDetailContext)
-	// const { showNoContent, message, setShowNoContent, setMessage } = React.useContext(HandleErrorContext)
 
-	React.useEffect(() => {
+	React.useEffect(async () => {
 		if (props.location.recipeId) {
 			const recipeId = props.location.recipeId
 
-			getRecipeById(recipeId).then(response  => {
-				if (response.status === 200) response.json().then((res) => { callSetData(res.data[0]) })
-				if (response.status === 404) () => { history.push('/') }
-			})
+			let response = await getRecipeById(recipeId)
 
+			getRecipeByIdResponse(
+				response.status,
+				response.payload
+			)
 		}
 
 		else history.push('/')
 
 	}, [])
 
-	const callSetData = recipe => {
-		// setName(recipe.name)
-		setIntro(recipe.intro)
-		setImage(recipe.image)
-		setPrepTime(recipe.prep_time)
-		setServings(recipe.servings)
-		setNutritionFacts(recipe.nutrition_facts)
-		setIngredients(recipe.ingredients)
-		setInstructions(recipe.instructions)
+	const getRecipeByIdResponse = (status, response) => {
+		const recipe = response.data[0]
+
+		switch (status) {
+		case 200:
+			setName(recipe.name)
+			setIntro(recipe.intro)
+			setImage(recipe.image)
+			setPrepTime(recipe.prep_time)
+			setServings(recipe.servings)
+			setNutritionFacts(recipe.nutrition_facts)
+			setIngredients(recipe.ingredients)
+			setInstructions(recipe.instructions)
+			break
+		case 404:
+			history.push('/')
+			break
+		default:
+			return 'Houve um erro com a aplicação'
+		}
 	}
 
 	return(
-		<RecipeDetailProvider>
+		<RecipeDetailContext.Provider
+			value={{
+				name,
+				setName
+			}}
+		>
 			<Header />
 			<Container
 				styling="tw-grid tw-justify-self-center tw-justify-center tw-py-6 tw-px-6 xl:tw-px-48 xl:tw-mb-28"
@@ -127,7 +142,7 @@ export default function RecipeDetails(props) {
 					</>
 				}
 			</Container>
-		</RecipeDetailProvider>
+		</RecipeDetailContext.Provider>
 	)
 }
 

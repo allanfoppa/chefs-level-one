@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React from 'react'
 
 import { Container} from '../components/Layout/Container'
@@ -6,6 +7,8 @@ import NoContent from '../components/Layout/NoContent'
 import Grid from '../components/Layout/Grid'
 import Card from '../components/Layout/Card'
 import Heading from '../components/Foundation/Heading'
+
+import { HandleErrorContext } from '../contexts/HandleError.context'
 
 import {
 	getCards
@@ -18,24 +21,34 @@ import {
 export default function Home() {
 
 	const [ cards, setCards ] = React.useState([])
-	const [ showNoContent, setShowNoContent ] = React.useState(false)
-	const [ message, setMessage ] = React.useState('')
+	const { showNoContent, message, setShowNoContent, setMessage } = React.useContext(HandleErrorContext)
 
 	React.useEffect(() => {
-		callGetCards()
+		getCardsService()
 	}, [])
 
-	const callGetCards = () => {
-		getCards().then(response  => {
-			if (response.status === 200) response.json().then((res) => { setCards(res.data) })
-			if (response.status === 404) response.json().then((res) => { handleError(res) })
-		})
+	const getCardsService = async () => {
+		let response = await getCards()
+
+		getCardsResponse(
+			response.status,
+			response.payload
+		)
+
 	}
 
-	const handleError = (res) => {
-		console.log('caiu no handleError')
-		setShowNoContent(true)
-		setMessage(res.message)
+	const getCardsResponse = (status, response) => {
+		switch (status) {
+		case 200:
+			setCards(response.data)
+			break
+		case 404:
+			setShowNoContent(true)
+			setMessage(response.message)
+			break
+		default:
+			return 'Houve um erro com a aplicação'
+		}
 	}
 
 	return(

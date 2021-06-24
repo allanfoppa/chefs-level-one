@@ -4,8 +4,12 @@ import Routes from './routes/'
 
 import './assets/styles/global.css'
 
+import { HandleErrorProvider } from './contexts/HandleError.context'
+
 ReactDOM.render(
 	<React.StrictMode>
-		<Routes />
+		<HandleErrorProvider>
+			<Routes />
+		</HandleErrorProvider>
 	</React.StrictMode>, document.getElementById('root')
 )

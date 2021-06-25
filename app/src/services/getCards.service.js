@@ -9,8 +9,16 @@ import { endpointHome } from '../constants/endpoint'
 
 export const getCards = async () => {
 	try {
-		return await fetch(endpointHome)
+		let data =  await fetch(endpointHome)
+
+		let response = {
+			payload: await data.json(),
+			status: data.status
+		}
+
+		return response
 	} catch (error) {
 		return console.log('Houve um problema com a requisição Fetch: ' + error.message)
 	}
 }
+

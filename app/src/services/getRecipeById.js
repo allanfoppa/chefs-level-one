@@ -12,7 +12,14 @@ export const getRecipeById = async (uuid) => {
 	try {
 
 		let endpoint = endpointRecipeDetails(uuid)
-		return await fetch(endpoint)
+		let data = await fetch(endpoint)
+
+		let response = {
+			payload: await data.json(),
+			status: data.status
+		}
+
+		return response
 	} catch (error) {
 		return console.log('Houve um problema com a requisição Fetch: ' + error.message)
 	}

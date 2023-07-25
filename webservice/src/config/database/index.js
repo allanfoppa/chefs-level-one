@@ -11,4 +11,6 @@ pool.on('connect', () => {
 	console.log('Connected with database!')
 })
 
-export function query(text, params) { return pool.query(text, params) }
+export function query(text, params) {
+	return pool.query(text, params)
+}

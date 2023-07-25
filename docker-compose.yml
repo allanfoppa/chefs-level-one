@@ -1,4 +1,4 @@
-version: "3.5"
+version: "3.9"
 
 services:
   db:
@@ -11,25 +11,33 @@ services:
     volumes:
       - ./db/table_recipes.sql:/docker-entrypoint-initdb.d/table_recipes.sql
     ports:
-      - "5432:5432"
+      - 5432:5432
+
   webservice:
-    image: node:14
+    build:
+      context: .
+      dockerfile: webservice.DockerFile
     container_name: chef_level_one_webservice
+    restart: always
     volumes:
-      - ./webservice:/code/webservice/
-      - ./sh:/usr/local/sh/
-    command: /bin/sh 'usr/local/sh/webservice.sh'
+      - ./webservice:/usr/src/code/webservice
+      - /usr/src/code/webservice/node_modules
     ports:
       - 3333:3333
     depends_on:
       - db
+
   app:
-    image: node:14
+    build:
+      context: .
+      dockerfile: app.DockerFile
     container_name: chef_level_one_app
+    environment:
+      - REACT_APP_WEBSERVICE_BASE_URL=${WEBSERVICE_API_URL}
+    restart: always
     volumes:
-      - ./app:/code/app/
-      - ./sh:/usr/local/sh/
-    command: /bin/sh 'usr/local/sh/app.sh'
+      - ./app:/usr/src/code/app
+      - /usr/src/code/app/node_modules
     ports:
       - 3000:3000
     depends_on:

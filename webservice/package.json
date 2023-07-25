@@ -5,7 +5,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "nodemon src/index.js",
+    "dev": "CHOKIDAR_USEPOLLING=true nodemon src/index.js",
     "start": "node src/index.js"
   },
   "keywords": [],
